@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Akad | Fatima & Yusron</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: url('https://i.imgur.com/t7Tdsxr.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .container {
+      position: relative;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      color: #f8e9c0;
+    }
+    .date {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #ffdfba;
+    }
+    .parents {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: #ffdfba;
+    }
+    .location {
+      font-size: 1rem;
+      color: #ffe8d6;
+    }
+    .countdown {
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: #fff3cd;
+    }
+    audio {
+      margin-top: 2rem;
+    }
+    .rsvp {
+      margin-top: 2rem;
+    }
+    .rsvp input, .rsvp button {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin: 0.2rem;
+    }
+    .rsvp button {
+      background-color: #a47148;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Undangan Akad</h1>
+    <p>Fatima Qoratul Aini & Yusron Hafidz</p>
+    <p class="date">22 Desember 2025</p>
+    <p class="parents">
+      Putri dari Bapak Rosianto Lubis & Ibu Siti Rahayu
+    </p>
+    <p class="location">Resto Raja Sunda</p>
+
+    <div class="countdown" id="countdown">Hitung mundur...</div>
+
+    <audio controls autoplay loop>
+      <source src="https://example.com/sampai-jadi-debu.mp3" type="audio/mpeg">
+      Lagu tidak didukung browser Anda.
+    </audio>
+
+    <div class="rsvp">
+      <h2>Konfirmasi Kehadiran (RSVP)</h2>
+      <input type="text" placeholder="Nama Anda" id="name" />
+      <button onclick="rsvp()">Kirim</button>
+      <div id="rsvp-result"></div>
+    </div>
+  </div>
+
+  <script>
+    const countDownDate = new Date("Dec 22, 2025 08:00:00").getTime();
+    const x = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}d`;
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Acara telah dimulai!";
+      }
+    }, 1000);
+
+    function rsvp() {
+      const name = document.getElementById("name").value;
+      if (name) {
+        document.getElementById("rsvp-result").innerText = `Terima kasih atas konfirmasi, ${name}!`;
+      }
+    }
+  </script>
+</body>
+</html>
